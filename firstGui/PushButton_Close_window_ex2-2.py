@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import sys
+import  time
 from PyQt5.QtWidgets import QApplication,QMainWindow,QLabel,QPushButton
 class App(QMainWindow):
 
@@ -22,15 +23,18 @@ class App(QMainWindow):
         self.label1.move(20,20)
         self.label2.setText('94v0i1c1k3y')
         self.label2.move(20,40)
-        self.button1.setText('test')
+        self.button1.setText('close')
         self.button1.move(20,80)
         #clicked是按鈕的signal
         self.button1.clicked.connect(self.buttonClicked) #連接signal 和slot
         self.show()
     #按鈕點擊事件(slot)
     def buttonClicked(self):
-        self.label1.setText('xxxxx')
-
+        print('click close button')
+        time.sleep(1)  # sleep 1秒
+        self.close(self)
+    def closeEvent(self, event):
+        print("User has clicked the red x on the main window")
 if __name__  == '__main__':
     app = QApplication(sys.argv)
     ex = App()
