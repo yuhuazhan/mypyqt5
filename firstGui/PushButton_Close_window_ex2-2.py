@@ -15,6 +15,7 @@ class App(QMainWindow):
         self.label1  = QLabel(self)
         self.label2  = QLabel(self)
         self.button1 = QPushButton(self)
+        self.button2 = QPushButton(self)
         self.initUI()
     def initUI(self):
         self.setWindowTitle(self.title)
@@ -23,15 +24,19 @@ class App(QMainWindow):
         self.label1.move(20,20)
         self.label2.setText('94v0i1c1k3y')
         self.label2.move(20,40)
-        self.button1.setText('close')
-        self.button1.move(20,80)
+        self.button1.setText('test')
+        self.button1.move(100,80)
+        self.button2.move(0,80)
+        self.button2.setText('close')
         #clicked是按鈕的signal
         self.button1.clicked.connect(self.buttonClicked) #連接signal 和slot
+        self.button2.clicked.connect(self.buttonClicked2)
         self.show()
     #按鈕點擊事件(slot)
     def buttonClicked(self):
-        print('click close button')
-        time.sleep(1)  # sleep 1秒
+        self.label1.setText('change by click test')
+    def buttonClicked2(self):
+        print('close by click close button')
         self.close(self)
     def closeEvent(self, event):
         print("User has clicked the red x on the main window")
